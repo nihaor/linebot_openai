@@ -25,12 +25,15 @@ handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
 # OPENAI API Key初始化設定
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
-client = OpenAI(api_key=api_key)
+client = OpenAI()
 def GPT_response(text):
     # 接收回應
     response = client.chat.completions.create(
             model="ft:gpt-3.5-turbo-0125:personal::9Mnu9l7J",  # Use the model specified in the documentation
-            messages=messages_for_api,
+            messages=[
+                {"role": "system", "content": "你是一個了解如何洗衣服，並且懂現在時下流行的穿搭的人"},
+                {"role": "user", "content": "我該如何正確的洗我的衣服呢?"}
+            ],
             max_tokens=150
         )
     print(response)
