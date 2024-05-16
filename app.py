@@ -30,14 +30,13 @@ client = OpenAI()
 def GPT_response(text):
     # 接收回應
     response = client.chat.completions.create(
-            model="ft:gpt-3.5-turbo-0125:personal::9Mnu9l7J",  
+            model="",  
             messages=[
                 {"role": "system", "content": "你是一個了解如何洗衣服，並且懂現在時下流行的穿搭的人"},
                 {"role": "user", "content": "我該如何正確的洗我的衣服呢?"}
             ],
             max_tokens=150
         )
-    print(response)
     # 重組回應
     answer = response['choices'][0]['text'].replace('。','')
     return answer
