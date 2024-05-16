@@ -26,8 +26,9 @@ handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
 # OPENAI API Key初始化設定
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
+client = OpenAI()
 def GPT_response(text):
-    client = OpenAI(api_key=OPENAI_API_KEY)
+   
     # 接收回應
     response = client.chat.completions.create(
             model="ft:gpt-3.5-turbo-0125:personal::9Mnu9l7J",  
