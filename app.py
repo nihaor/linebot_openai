@@ -25,13 +25,12 @@ line_bot_api = LineBotApi(os.getenv('CHANNEL_ACCESS_TOKEN'))
 handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
 # OPENAI API Key初始化設定
 openai.api_key = os.getenv('OPENAI_API_KEY')
-
 client = OpenAI()
 def GPT_response(text):
    
     # 接收回應
     response = client.chat.completions.create(
-            model="ft:gpt-3.5-turbo-0125:personal::9Mnu9l7J",  
+            model="ft:gpt-3.5-turbo-0125:personal::9RubavzI",  
             messages=[
                 {"role": "system", "content": "你是一個了解如何洗衣服，並且懂現在時下流行的穿搭的人"},
                 {"role": "user", "content": text}
@@ -41,7 +40,6 @@ def GPT_response(text):
         )
     # 重組回應
     return response.choices[0].message.content
-
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
